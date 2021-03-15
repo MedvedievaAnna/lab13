@@ -1,0 +1,85 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+
+using namespace std;
+
+void transponse(int matr[5][5]) 
+{
+    // temporary variable
+    int temp;
+    //first loop
+    for(int i = 0; i < 5; ++i)
+    {
+        //second loop
+        for(int j = i; j < 5; ++j)
+        {
+            //transponse elements - swap elements
+            temp = matr[i][j];
+            matr[i][j] = matr[j][i];
+            matr[j][i] = temp;
+        }
+    }
+}
+
+int multipleMinRowElement(int matr[5][5])
+{
+    int result = 1;
+    int i,j;
+    for (i = 0; i < 5; i++)
+    {
+         int min = matr[i][0];
+        for (j = 0; j < 5; j++)
+        {
+             if (matr[i][j] < min)
+             {
+                 min = matr[i][j];
+             }
+         }
+         result = result * min;
+
+    }
+    return result;
+}
+
+int main()
+{
+    
+    int matrLength = 5;
+    int matr[matrLength][5];
+    
+    
+    for (int i=0; i<matrLength; i++)
+    {
+        for (int j=0; j<matrLength; j++){
+          matr[i][j]=rand()%9 + 1;   
+        }       
+    }
+    
+    
+    
+    cout << "Original matrix" << endl;
+    for (int i = 0; i < matrLength; i++) {
+        for (int j = 0; j < matrLength; j++) {
+            cout << " " << matr[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    cout << "Transponse" << endl;
+    transponse(matr);
+    
+    for (int i = 0; i < matrLength; i++) {
+        for (int j = 0; j < matrLength; j++) {
+            cout << " " << matr[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    
+    cout << "Multiplication of minimal elements" << endl;
+    cout << multipleMinRowElement(matr) << endl;
+
+    return 0;
+}
