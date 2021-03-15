@@ -1,0 +1,15 @@
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+//Функція
+int dupl(int a) { //a – локальна копія змінної x
+ a = 2 * a; //Значення x не змінюється
+ return a;
+}
+int main(){
+ int x = 1;
+ /*Виклик функції з передачею аргументу по значенню*/
+ int y = dupl(x); //Результат функції записуємо в y
+ cout<<x<<endl; //Функція не змінила значення x
+ return 0;
+}
